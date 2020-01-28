@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text;
+using System.Threading;
 
 namespace ConsoleBigLetters
 {
@@ -9,12 +11,11 @@ namespace ConsoleBigLetters
             #region 
             Symbols.Init ();
 
-            string numTest = "0123456789 ?!";
-            string abcTest = "KASUD ы";
+            string kasudText = "KASUD";
 
-            Symbols.PrintThisShit (numTest, '@');
-            // Console.WriteLine("");
-            Symbols.PrintThisShit (abcTest, '@', ConsoleColor.DarkCyan);
+            char[, ] result = Symbols.ConvertToWordArray (kasudText);
+
+            Symbols.MovementPrint(result, 50);
 
             #endregion
         }
