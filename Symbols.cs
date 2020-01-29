@@ -57,9 +57,17 @@ namespace ConsoleBigLetters {
             int cols = arr.GetLength (1);
             int rows = arr.GetLength (0);
 
+            // With deleting text LtR
+            // for (int i = 0; i < rows; i++) {
+            //     for (int j = cols - 1; j > 0; j--) {
+            //         arr[i, j] = (j - shift) >= 0 ? arr[i, j - shift] : ' ';
+            //     }
+            // }
+
+            // With deleting text RtL
             for (int i = 0; i < rows; i++) {
-                for (int j = cols - 1; j > 0; j--) {
-                    arr[i, j] = (j - shift) >= 0 ? arr[i, j - shift] : ' ';
+                for (int j = 1; j < cols; j++) {
+                    arr[i, j] = (j + shift) < cols ? arr[i, j + shift] : ' ';
                 }
             }
 
@@ -68,19 +76,19 @@ namespace ConsoleBigLetters {
 
         private static char[, ] ConcatArrays (List<char[, ]> list) {
 
-            int rows_max = 0;
-            int rows_item = 0;
-            int cols_item = 0;
-            int cols_all = 0;
-            int shift = 0;
+            int rows_max    = 0;
+            int rows_item   = 0;
+            int cols_item   = 0;
+            int cols_all    = 0;
+            int shift       = 0;
 
             foreach (var item in list) {
                 cols_all += item.GetLength (1);
                 rows_max = item.GetLength (0) > rows_max ? item.GetLength (0) : rows_max;
             }
 
-            // Additional 30% for goor reading
-            cols_all = (int)(cols_all*1.3);
+            // Additional 30% for good reading
+            // cols_all = (int)(cols_all*1.3);
 
             char[, ] result = new char[rows_max, cols_all];
 

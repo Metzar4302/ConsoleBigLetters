@@ -15,7 +15,7 @@ namespace ConsoleBigLetters
 
             char[, ] result = Symbols.ConvertToWordArray (kasudText);
 
-            Symbols.MovementPrint(result, 50);
+            LEDDisplay.MovementPrint(result, 50);
 
             #endregion
         }
